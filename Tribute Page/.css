@@ -1,0 +1,41 @@
+body {
+  background-color: #CCADB2;
+  font-size:15px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height:1.5;
+  text-align:center;
+  color: #2E3332;
+  margin:0;
+}
+img {
+  width:800px;
+  margin:auto;
+  max-width:100%;
+  display:block;
+  
+}
+h1 {
+  font-family: "Brush Script MT", Arial;
+  font-size:60px;
+  font-weight: 10;
+  margin-bottom:3px;
+}
+ul {
+  max-width: 550px;
+  margin: 0 auto 60px auto;
+  text-align: left;
+  line-height: 1.5;
+}
+
+li {
+  font-size:17px;
+  margin: 20px 0;
+}
+
+blockquote {
+  font-family: "Lucida Sans", Arial;
+  font-size:14px;
+  max-width: 400px;
+  margin: 0 auto 50px auto;
+  text-align: left;
+}
