@@ -1,0 +1,17 @@
+#navbar {
+  position:fixed;
+  border-right: solid;
+  width:240px;
+}
+#main-doc {
+  position: absolute;
+  margin-left: 260px;
+  padding: 30px;
+}
+@media (max-width:800px) {
+  #navbar {
+    position: absolute;
+    width: 100%;
+    max-height: 275px;
+  }
+}
