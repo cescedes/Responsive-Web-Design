@@ -1,0 +1,41 @@
+<!-- 
+
+Hello Camper!
+
+Please read the README below in the JS Editor before beginning. Feel free to delete this message once you have read it. Good luck and Happy Coding! 
+
+- The freeCodeCamp Team 
+
+-->
+<h1 id="title">Survey Form</h1>
+<p id="description"> Thank you for taking the survey. </p>
+<form id="survey-form">
+  <label id="name-label" for="name">Name:</label>
+    <input id="name" type="text" name="name" placeholder="Enter your name" required>
+  <label id="email-label" for="email">Email:</label><input id="email" type="email" name="email" placeholder="Enter your e-mail" required>
+   <label id="number-label" for="number">Class:</label><input type="number" name="class" id="number" min="1" max="4" placeholder="Class"/>
+   <p>What is your major?</p>
+      <select id="dropdown" name="major" required>
+        <option disabled selected value>Select major</option>
+        <option value="Aerospace Engineering">Aerospace Engineering</option>
+        <option value="Biomedical Engineering">Biomedical Engineering</option>
+        <option value="Civil Engineering">Civil Engineering</option>
+        <option value="Computer Engineering">Computer Engineering</option>
+        <option value="Electrical Engineering">Electrical Engineering</option>
+        <option value="Mechanical Engineering">Mechanical Engineering</option>
+      </select>
+  <p>Do you use the library in the faculty?</p>
+      <label> <input name="library" value="yes" type="radio"/>Yes</label>
+      <label><input name="library" value="No" type="radio"/>No</label>
+     <label><input name="library" value="sometimes" type="radio"/>Sometimes</label>
+  
+   <p>What time during the day do you go to the library?</p>
+<label><input name="time" value="08-12" type="checkbox" />08:00-12:00</label>
+  <label><input name="time" value="12-17" type="checkbox" />12:00-17:00</label>
+  <label><input name="time" value="17-20" type="checkbox" />17:00-20:00</label>
+  <label><input name="time" value="20-00" type="checkbox" />20:00-00:00</label>
+  <label><input name="time" value="00-08" type="checkbox" />00:00-08:00</label>
+    
+    <p>Any comments or suggestions?</p>
+      <textarea id="comments" name="comment" placeholder="Enter your comment here..."></textarea>
+ <button type="submit" id="submit">Submit</button>
