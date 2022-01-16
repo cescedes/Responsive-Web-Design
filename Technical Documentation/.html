@@ -1,0 +1,118 @@
+<nav id="navbar">
+  <header>Python Latest Documentation</header>
+  <ul>
+    <li><a class="nav-link" href="#release_highlights">release highlights</a></li>
+    <li><a class="nav-link" href="#new_features">new features</a></li>
+     <li><a class="nav-link" href="#better_error_messages">Better error messages</a></li>
+    <li><a class="nav-link" href="#other_key_features">Other key features</a></li>
+    <li><a class="nav-link" href="#new_feature_hints">new feature hints</a></li>
+  </ul>
+</nav>
+<main id="main-doc">
+  <section class="main-section" id="release_highlights"><header>release highlights</header>
+     <p>
+       New syntax features:
+      </p>
+      <ul>
+        <li>
+         PEP 634, Structural Pattern Matching: Specification
+        </li>
+        <li>
+          PEP 635, Structural Pattern Matching: Motivation and Rationale
+        </li>
+        <li>PEP 636, Structural Pattern Matching: Tutorial
+        </li>
+        <li>bpo-12782, Parenthesized context managers are now officially allowed.
+        </li>
+      </ul>
+  </section>
+  <section class="main-section" id="new_features"><header>new features</header><p> Using enclosing parentheses for continuation across multiple lines in context managers is now supported. This allows formatting a long collection of context managers in multiple lines in a similar way as it was previously possible with import statements. For instance, all these examples are now valid:
+      <code
+        >with (CtxManager() as example):
+    ...
+
+with (
+    CtxManager1(),
+    CtxManager2()
+):
+    ...
+
+with (CtxManager1() as example,
+      CtxManager2()):
+    ...
+
+with (CtxManager1(),
+      CtxManager2() as example):
+    ...
+
+with (
+    CtxManager1() as example1,
+    CtxManager2() as example2
+):
+    ...
+    </code></p> <p> it is also possible to use a trailing comma at the end of the enclosed group:</p>
+    <code>with (
+    CtxManager1() as example1,
+    CtxManager2() as example2,
+    CtxManager3() as example3,
+):
+    ...</code>
+    </section>
+  <section class="main-section" id="better_error_messages"><header>better error messages</header> <p>
+      When parsing code that contains unclosed parentheses or brackets the interpreter now includes the location of the unclosed bracket of parentheses instead of displaying SyntaxError: unexpected EOF while parsing or pointing to some incorrect location. For instance, consider the following code (notice the unclosed ‘{‘):
+    </p>
+    <code>expected = {9: 1, 18: 2, 19: 2, 27: 3, 28: 3, 29: 3, 36: 4, 37: 4,
+            38: 4, 39: 4, 45: 5, 46: 5, 47: 5, 48: 5, 49: 5, 54: 6,
+some_other_code = foo()</code>
+    <p>
+     Previous versions of the interpreter reported confusing places as the location of the syntax error:
+    </p>
+    <code>File "example.py", line 3
+    some_other_code = foo()
+                    ^
+SyntaxError: invalid syntax</code>
+    <p>
+     A considerable amount of new specialized messages for SyntaxError exceptions have been incorporated. Some of the most notable ones are as follows:
+    </p>
+    <ul>
+      <li>Missing : before blocks:</li>
+        <code>>>> if rocket.position > event_horizon
+  File "<stdin>", line 1
+    if rocket.position > event_horizon
+                                      ^
+SyntaxError: expected ':'</code>
+      
+        <li>Unparenthesised tuples in comprehensions targets:
+      </li>
+          <code>>>> {x,y for x,y in zip('abcd', '1234')}
+  File "<stdin>", line 1
+    {x,y for x,y in zip('abcd', '1234')}
+     ^
+SyntaxError: did you forget parentheses around the comprehension target?</code>
+            </ul>
+    </section>
+  <section class="main-section" id="other_key_features"><header>other key features</header><p>
+        Several other key features:
+      </p>
+    <ul>
+      <li>Like unpacking assignments, tuple and list patterns have exactly the same meaning and actually match arbitrary sequences. Technically, the subject must be a sequence. Therefore, an important exception is that patterns don’t match iterators. Also, to prevent a common mistake, sequence patterns don’t match strings.
+      </li>
+      <li>Sequence patterns support wildcards: [x, y, *rest] and (x, y, *rest) work similar to wildcards in unpacking assignments. The name after * may also be _, so (x, y, *_) matches a sequence of at least two items without binding the remaining items.
+      </li>
+      <li>Mapping patterns: {"bandwidth": b, "latency": l} captures the "bandwidth" and "latency" values from a dict. Unlike sequence patterns, extra keys are ignored. A wildcard **rest is also supported. (But **_ would be redundant, so is not allowed.)
+      </li>
+      <li>Subpatterns may be captured using the as keyword:
+      </li>
+      <code>case (Point(x1, y1), Point(x2, y2) as p2): ...</code>
+    </ul>
+    <p>This binds x1, y1, x2, y2 like you would expect without the as clause, and p2 to the entire second item of the subject.</p>
+    </section>
+      <section class="main-section" id="new_feature_hints"><header>new feature hints</header><p>This section covers major changes affecting PEP 484 type hints and the typing module.</p><p>wo new options to improve the information provided to static type checkers for PEP 484‘s Callable have been added to the typing module.
+
+The first is the parameter specification variable. They are used to forward the parameter types of one callable to another callable – a pattern commonly found in higher order functions and decorators. Examples of usage can be found in typing.ParamSpec. Previously, there was no easy way to type annotate dependency of parameter types in such a precise manner.
+
+The second option is the new Concatenate operator. It’s used in conjunction with parameter specification variables to type annotate a higher order callable which adds or removes parameters of another callable. Examples of usage can be found in typing.Concatenate.
+
+See typing.Callable, typing.ParamSpec, typing.Concatenate, typing.ParamSpecArgs, typing.ParamSpecKwargs, and PEP 612 for more details.
+
+(Contributed by Ken Jin in bpo-41559, with minor enhancements by Jelle Zijlstra in bpo-43783. PEP written by Mark Mendoza.)</p></section>
