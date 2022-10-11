@@ -88,6 +88,7 @@ let drawBars=()=>{
       
       document.querySelector('#tooltip').setAttribute('data-date',(item[0]))
     })
+    
   .on('mouseout',(item)=>{
       tooltip.transition()
              .style('visibility','hidden')
